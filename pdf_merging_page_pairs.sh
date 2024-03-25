@@ -9,22 +9,23 @@ fi
 
 if ! command -v pdfjam &> /dev/null
 then
-    echo "'pdfjam' could not be found. Please check that pdfjam is installed."
+    echo "'pdfjam' could not be found. Please check that 'texlive-extra-utils' is installed."
     exit 1
 fi
 
 `zenity --info --title="PDF Merging Page Pairs" --text="Processes a PDF file.\n Merges pairs of pages into single pages.\n Each pair into one page."`
 
 `zenity --info --text="First select the source file"`
-IN_FILE=`zenity --file-selection --title="Select the source file"`
+IN_FILE=`zenity --file-selection --filename="$HOME/$USER" --title="Select the source file"`
 if [ $? == 0 ]; then
     echo "\"$IN_FILE\" selected."
 else
     exit
 fi
 
+
 `zenity --info --text="Now select the output file"`
-OUT_FILE=`zenity --file-selection --save --filename=".pdf" --title="Select the output file"`
+OUT_FILE=`zenity --file-selection --save --filename="${IN_FILE%.*}-nuped.pdf" --title="Select the output file"`
 if [ $? == 0 ]; then
     echo "\"$OUT_FILE\" selected."
 else
