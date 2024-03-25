@@ -1,7 +1,7 @@
 #!/bin/bash
 # Processes a PDF file. Merges pairs of pages into single pages.
 
-if ! command -v zenity1 &> /dev/null
+if ! command -v zenity &> /dev/null
 then
     echo "'zenity' could not be found. Please check that zenity is installed."
     exit 1
@@ -24,7 +24,7 @@ else
 fi
 
 `zenity --info --text="Now select the output file"`
-OUT_FILE=`zenity --file-selection --save --title="Select the output file"`
+OUT_FILE=`zenity --file-selection --save --filename=".pdf" --title="Select the output file"`
 if [ $? == 0 ]; then
     echo "\"$OUT_FILE\" selected."
 else
