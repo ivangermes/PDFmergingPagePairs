@@ -1,2 +1,2 @@
 # PDFmergingPagePairs
-Processes a PDF file. Merges pairs of pages into pages.
+Processes a PDF file. Merges pairs of pages into single pages.
